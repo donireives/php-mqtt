@@ -1,6 +1,7 @@
 <?php
 
 $client = new Mosquitto\Client();
+// $client->setCredentials("userName","password");
 $client->onConnect('connect');
 $client->onDisconnect('disconnect');
 $client->onPublish('publish');
@@ -9,6 +10,7 @@ $client->connect("localhost", 1883, 5);
 while (true) {
 	try{
 		$client->loop();
+		// $mid = $client->publish('testtopic', "Hello from PHP!");
 		$mid = $client->publish('/mqtt', "Hello from PHP!");
 		$client->loop();
 	}catch(Mosquitto\Exception $e){

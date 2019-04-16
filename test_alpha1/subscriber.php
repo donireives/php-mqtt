@@ -6,6 +6,7 @@ $client->onDisconnect('disconnect');
 $client->onSubscribe('subscribe');
 $client->onMessage('message');
 $client->connect("localhost", 1883, 60);
+// $client->subscribe('amren', 1);
 $client->subscribe('/#', 1);
 
 while (true) {
